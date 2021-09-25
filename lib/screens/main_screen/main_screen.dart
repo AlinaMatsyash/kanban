@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:kanban/theme/color_theme.dart';
 
 class MainScreen extends StatefulWidget {
   String name;
@@ -22,21 +23,26 @@ class _MainScreenState extends State<MainScreen> {
 
 
   Future resp() async {
-    final response = await http.post(Uri.parse('https://trello.backend.tests.nekidaem.ru/api/v1/users/login/'), body: {'username': widget.name, 'password': widget.password, } );
+    final response = await http.post(Uri.parse('https://trello.backend.tests.nekidaem.ru/api/v1/users/login/'), body: {'username': widget.name, 'password': widget.password, },
+       //encoding: Encoding.getByName('UTF-8'),
+    );
     final responseJson = jsonDecode(response.body);
     print(' response ===== ${response.body}');
     print(' response ===== ${response.statusCode}');
     var toc = responseJson['token'];
     print(toc);
-    final response1 = await http.get(
+    var response1 = await http.get(
       Uri.parse('https://trello.backend.tests.nekidaem.ru/api/v1/cards/'),
-      // Send authorization headers to the backend.
       headers: {
-        'Authorization': 'JWT ${toc}',
+        'Authorization': 'JWT $toc',
       },
     );
     print(response1.statusCode);
-    print(jsonDecode(response1.body));
+    String body = response1.body;
+    final codeUnits = body.codeUnits;
+
+    print('UTF');
+    print(Utf8Decoder().convert(codeUnits));
     return response1;
   }
 
@@ -47,7 +53,7 @@ class _MainScreenState extends State<MainScreen> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        backgroundColor: Color(0xff000000),
+        backgroundColor: ColorPalette.black,
         appBar: AppBar(
           backgroundColor: Color(0xff424242),
           automaticallyImplyLeading: false,
@@ -59,9 +65,9 @@ class _MainScreenState extends State<MainScreen> {
               },
               child: Icon(
                 Icons.arrow_back,
-                color: Colors.white,
+                color: ColorPalette.white,
               ),
-              backgroundColor: Color(0xff63ffd8),
+              backgroundColor: ColorPalette.turquoise,
             )
           ],
           bottom: TabBar(

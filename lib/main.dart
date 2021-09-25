@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kanban/screens/login/login.dart';
+import 'package:kanban/screens/login/authentication.dart';
 
 void main() {
   runApp(const MyApp());

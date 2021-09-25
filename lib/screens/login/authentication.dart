@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kanban/screens/main_screen/main_screen.dart';
+import 'package:kanban/theme/color_theme.dart';
 
 class RegisterFormPage extends StatefulWidget {
   const RegisterFormPage({Key? key}) : super(key: key);
@@ -25,12 +26,12 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff000000),
+      backgroundColor: ColorPalette.black,
       //backgroundColor: Colors.red,
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Kanban'),
-        backgroundColor: Color(0xff424242),
+        backgroundColor: ColorPalette.grey,
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -45,21 +46,21 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                 controller: nameController,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ColorPalette.white,
                 ),
                 decoration: InputDecoration(
                   //labelText: 'Email Address',
                   hintText: 'Enter your username',
-                  hintStyle: TextStyle(color: Color(0xff424242)),
+                  hintStyle: TextStyle(color: ColorPalette.grey),
                   focusedErrorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Colors.red)),
+                      borderSide: BorderSide(color: ColorPalette.red)),
                   errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Colors.red)),
+                      borderSide: BorderSide(color: ColorPalette.red)),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Color(0xff63ffd8))),
+                      borderSide: BorderSide(color: ColorPalette.turquoise)),
 
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -75,26 +76,25 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                 //obscureText: _hidePass,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ColorPalette.white,
                 ),
                 decoration: InputDecoration(
                   //labelText: 'Email Address',
                   hintText: 'Enter your password',
-                  hintStyle: TextStyle(color: Color(0xff424242)),
-                  fillColor: Colors.yellow,
+                  hintStyle: TextStyle(color: ColorPalette.grey),
                   focusedErrorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Colors.red)),
+                      borderSide: BorderSide(color: ColorPalette.red)),
                   errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Colors.red)),
+                      borderSide: BorderSide(color: ColorPalette.red)),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Color(0xff63ffd8))),
+                      borderSide: BorderSide(color: ColorPalette.turquoise)),
 
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Color(0xff424242))),
+                      borderSide: BorderSide(color: ColorPalette.grey)),
                 ),
                 validator: (value) {
                   return _validatePassword(value);
@@ -106,7 +106,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color(0xff63ffd8)),
+                    backgroundColor: MaterialStateProperty.all(ColorPalette.turquoise),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
