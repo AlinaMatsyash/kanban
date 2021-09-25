@@ -28,7 +28,16 @@ class _MainScreenState extends State<MainScreen> {
     print(' response ===== ${response.statusCode}');
     var toc = responseJson['token'];
     print(toc);
-    return toc;
+    final response1 = await http.get(
+      Uri.parse('https://trello.backend.tests.nekidaem.ru/api/v1/cards/'),
+      // Send authorization headers to the backend.
+      headers: {
+        'Authorization': 'JWT ${toc}',
+      },
+    );
+    print(response1.statusCode);
+    print(jsonDecode(response1.body));
+    return response1;
   }
 
 
